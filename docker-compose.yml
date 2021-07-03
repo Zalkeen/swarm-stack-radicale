@@ -1,0 +1,20 @@
+version: '3.7'
+services:
+  daemon:
+    image: zalkeen/radicale:3.0.6-arm32v7
+    volumes:
+      - ${DAV_VOLUME_DATA:-./volumes/config}:/etc/radicale
+      - ${DAV_VOLUME_DATA:-./volumes/data}:/var/lib/radicale
+    networks:
+      - web
+      - default
+    deploy:
+      labels:
+        - "traefik.enable=true"
+        - "traefik.docker.network=web"
+        - "traefik.port=5232"
+        - "traefik.frontend.rule=Host:${DAV_CONF_URL:-dav.domain.com}"
+        - "traefik.frontend.port=5232"
+networks:
+  web:
+    external: true

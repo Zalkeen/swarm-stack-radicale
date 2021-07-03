@@ -1,0 +1,2 @@
+# htpasswd -B -c ./volumes/config/users <username>
+exampleuser:changethispassword

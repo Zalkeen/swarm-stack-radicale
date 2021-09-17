@@ -7,7 +7,6 @@ services:
       - ${DAV_VOLUME_DATA:-./volumes/data}:/var/lib/radicale
     networks:
       - web
-      - default
     deploy:
       labels:
         - "traefik.enable=true"
